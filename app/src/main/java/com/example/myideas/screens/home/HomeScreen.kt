@@ -106,14 +106,19 @@ fun MainContent(viewModel: MainViewModel) {
         Divider(modifier = Modifier.padding(10.dp))
 
         //dynamic must change "items" if it was hardcored before
-        LazyColumn{
-            items(plans){plan ->
-                PlanItem(plan= plan,
-                    onPlanClicked = {
-                        viewModel.removePlan(it)
-                    })
+        if(viewModel.listState.collectAsState().value){
+            LazyColumn{
+                items(plans){plan ->
+                    PlanItem(plan= plan,
+                        onPlanClicked = {
+                            viewModel.removePlan(it)
+                        })
+                }
             }
+        }else{
+            Text(text = "You don't have any plans")
         }
+        
         //hardcoded
         /*LazyColumn{
             items(plans){plan ->

@@ -20,13 +20,18 @@ class MainViewModel @Inject constructor(private val repository: PlanRepository) 
     private var _planList = MutableStateFlow<List<Plan>>(emptyList())
     val planList = _planList.asStateFlow()
 
+    private var _listState = MutableStateFlow<Boolean>(false)
+    val listState = _listState.asStateFlow()
+
     init {
         viewModelScope.launch(Dispatchers.IO) {
             repository.getAllPlan().distinctUntilChanged().collect { listPlan->
 
                 if(!listPlan.isNullOrEmpty()){
                     _planList.value = listPlan
+                    _listState.value = true
                 }else{
+                    _listState.value = false
                     Log.d("Empty", "There are not plans")
                 }
 
