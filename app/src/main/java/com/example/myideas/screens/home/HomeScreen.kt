@@ -136,11 +136,11 @@ fun PlanItem(
         modifier = modifier
             .fillMaxWidth()
             .padding(20.dp)
-            .clip(RoundedCornerShape(23.dp)),//aqui mencionar orden de las propiedades
-        color = Color.Red.copy(alpha = 0.4f)//aqui mencionar lo del alfa
+            .clip(RoundedCornerShape(23.dp)),
+        color = Color.Red.copy(alpha = 0.4f)
     ) {
         Column(modifier = modifier
-            .clickable { onPlanClicked(plan) }//aca mencionar lo de la funcion unit declarada
+            .clickable { onPlanClicked(plan) }
             .padding(horizontal = 14.dp, vertical = 6.dp),
             horizontalAlignment = Alignment.Start) {
             Text(text = plan.title,
