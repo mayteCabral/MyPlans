@@ -2,9 +2,7 @@ package com.example.myideas.screens.home
 
 import android.widget.Toast
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -32,7 +30,9 @@ import com.example.myideas.utils.formatDate
 @Composable
 fun HomeScreen(
     navController: NavController = rememberNavController(),
-    viewModel: MainViewModel = hiltViewModel()
+    viewModel: MainViewModel = hiltViewModel(),
+    testText: String = "default",
+    testText2: String = "default",
 ){
     Scaffold(topBar = {
         PlansTopBar(
@@ -44,6 +44,12 @@ fun HomeScreen(
             }
         )
     }) {
+        Row(modifier = Modifier.padding(10.dp)) {
+            Text(testText)
+            Spacer(modifier = Modifier.width(20.dp))
+            Text(testText2)
+        }
+
         MainContent(viewModel)
     }
 }
